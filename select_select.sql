@@ -46,6 +46,17 @@ WHERE x.continent = y.continent)
 ORDER BY continent;
 
 # Question 9
+SELECT name, continent, population
+FROM world x
+WHERE 25000000 >= ALL(SELECT population
+FROM world y
+WHERE x.continent = y.continent AND y.population>0);
+
+# Question 10
+SELECT name, continent
+FROM world x
+WHERE population >= ALL(SELECT population*3 FROM world y
+WHERE x.continent = y.continent AND y.name != x.name);
 
 
 
